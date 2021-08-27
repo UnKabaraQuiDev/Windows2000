@@ -1,7 +1,12 @@
 package org.lcdd.windows2k.frame.apps;
 
+import java.beans.PropertyVetoException;
+
 import javax.swing.ImageIcon;
+import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
+
+import org.lcdd.windows2k.utils.FileTree;
 
 public class Windows2KFileExplorerApp extends Windows2KApp {
 
@@ -15,6 +20,14 @@ public class Windows2KFileExplorerApp extends Windows2KApp {
 		
 		frame.setBounds(10, 20, 350, 500);
 		frame.setVisible(true);
+		try {
+			frame.setSelected(true);
+		} catch (PropertyVetoException e) {}
+		frame.setContentPane(new JDesktopPane());
+		FileTree tree = new FileTree("./");
+		frame.getContentPane().add(tree);
+		
+		System.out.println("hey");
 		
 		registerFrame(frame);
 		return frame;
