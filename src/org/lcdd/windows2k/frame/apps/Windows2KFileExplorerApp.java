@@ -16,8 +16,6 @@ public class Windows2KFileExplorerApp extends Windows2KApp {
 		frame.setBounds(10, 20, 350, 500);
 		frame.setVisible(true);
 		
-		System.out.println("hey");
-		
 		registerFrame(frame);
 		return frame;
 	}

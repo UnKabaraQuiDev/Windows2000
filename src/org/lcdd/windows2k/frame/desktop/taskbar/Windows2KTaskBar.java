@@ -31,13 +31,13 @@ public class Windows2KTaskBar extends JPanel {
 		updateLocation();
 		
 		startMenu.setBorder(new BevelBorder(BevelBorder.RAISED, Color.GRAY, Color.DARK_GRAY));
-		startMenu.setBounds(0, 0, 80, 30);
+		startMenu.setBounds(0, 0, 80, 40);
 		startMenu.setVisible(true);
 		super.add(startMenu);
 		
 		int i = 0;
 		for(Windows2KApp app : frame.apps) {
-			JLabel label = new JLabel(new ImageIcon(Utils.getScaledImage(app.icon.getImage(), 30, 30)));
+			JLabel label = new JLabel(new ImageIcon(Utils.getScaledImage(app.icon.getImage(), 40, 40)));
 			JToolTip toolTip = label.createToolTip();
 			toolTip.setTipText(app.name);
 			label.addMouseListener(new MouseListener() {
@@ -55,7 +55,7 @@ public class Windows2KTaskBar extends JPanel {
 				}
 			});
 			label.setBorder(new BevelBorder(BevelBorder.RAISED, Color.GRAY, Color.DARK_GRAY));
-			label.setBounds(80+(i*30), 0, 30, 30);
+			label.setBounds(80+(i*40), 0, 40, 40);
 			label.setVisible(true);
 			super.add(label);
 			
@@ -67,7 +67,7 @@ public class Windows2KTaskBar extends JPanel {
 		hour.setVerticalAlignment(SwingConstants.CENTER);
 		hour.setHorizontalAlignment(SwingConstants.CENTER);
 		hour.setBorder(new BevelBorder(BevelBorder.RAISED, Color.GRAY, Color.DARK_GRAY));
-		hour.setBounds((int) super.getBounds().getWidth()-70, 0, 70, 30);
+		hour.setBounds((int) super.getBounds().getWidth()-70, 0, 70, 40);
 		hour.setVisible(true);
 		super.add(hour);
 		
@@ -77,13 +77,13 @@ public class Windows2KTaskBar extends JPanel {
 	}
 	
 	public void updateLocation() {
-		super.setBounds(0, (int) frame.desktop.getBounds().getHeight()-30, (int) frame.desktop.getBounds().getWidth(), 30);
-		hour.setBounds((int) super.getBounds().getWidth()-70, 0, 70, 30);
-		startMenu.setBounds(0, 0, 80, 30);
+		super.setBounds(0, (int) frame.desktop.getBounds().getHeight()-40, (int) frame.desktop.getBounds().getWidth(), 40);
+		hour.setBounds((int) super.getBounds().getWidth()-70, 0, 70, 40);
+		startMenu.setBounds(0, 0, 80, 40);
 		
 		int i = 0;
 		for(JLabel label : appLabels) {
-			label.setBounds(80+(i*30), 0, 30, 30);
+			label.setBounds(80+(i*40), 0, 40, 40);
 			i++;
 		}
 	}
