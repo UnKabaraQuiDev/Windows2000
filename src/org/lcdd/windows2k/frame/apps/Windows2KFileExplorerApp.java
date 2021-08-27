@@ -6,12 +6,15 @@ import javax.swing.JInternalFrame;
 public class Windows2KFileExplorerApp extends Windows2KApp {
 
 	public Windows2KFileExplorerApp() {
-		super("File explorer", new ImageIcon("./img/explorer.png"));
+		super("File explorer", new ImageIcon("./img/My_Documents.ico"));
 	}
 	
 	@Override
 	public JInternalFrame createFrame() {
-		return null;
+		JInternalFrame frame = new JInternalFrame(name);
+		
+		registerFrame(frame);
+		return frame;
 	}
 
 }
