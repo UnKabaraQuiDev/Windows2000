@@ -2,6 +2,7 @@ package org.lcdd.windows2k.frame.desktop.taskbar;
 
 import java.awt.Color;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -12,6 +13,7 @@ import org.lcdd.windows2k.frame.Windows2KFrame;
 @SuppressWarnings("serial")
 public class Windows2KTaskBar extends JPanel {
 
+	private JLabel startMenu = new JLabel(new ImageIcon("./img/start_main.jpg"));
 	private JLabel hour = new JLabel("<html>hour</html>");
 	private Windows2KFrame frame;
 	
@@ -19,6 +21,11 @@ public class Windows2KTaskBar extends JPanel {
 		this.frame = frame;
 		
 		updateLocation();
+		
+		startMenu.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.GRAY, Color.DARK_GRAY));
+		startMenu.setBounds(0, 0, 80, 30);
+		startMenu.setVisible(true);
+		super.add(startMenu);
 		
 		hour.setVerticalAlignment(SwingConstants.CENTER);
 		hour.setHorizontalAlignment(SwingConstants.CENTER);
@@ -35,6 +42,7 @@ public class Windows2KTaskBar extends JPanel {
 	public void updateLocation() {
 		super.setBounds(0, (int) frame.desktop.getBounds().getHeight()-30, (int) frame.desktop.getBounds().getWidth(), 30);
 		hour.setBounds((int) super.getBounds().getWidth()-70, 0, 70, 30);
+		startMenu.setBounds(0, 0, 80, 30);
 	}
 	
 	public String getHour() {return hour.getText();}
