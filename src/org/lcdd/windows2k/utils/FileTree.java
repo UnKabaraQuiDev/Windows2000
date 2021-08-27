@@ -45,6 +45,7 @@ public class FileTree extends JTree implements TreeSelectionListener {
 		DefaultTreeModel model = (DefaultTreeModel) super.getModel();
 	    DefaultMutableTreeNode root = (DefaultMutableTreeNode) model.getRoot();
 	    root.setUserObject(randomise(root.getUserObject().toString()));
+	    model.nodeChanged(root);
 	}
    
 }

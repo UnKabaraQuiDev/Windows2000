@@ -1,7 +1,6 @@
 package org.lcdd.windows2k.frame.apps;
 
 import java.awt.Color;
-import java.beans.PropertyVetoException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
@@ -21,9 +20,6 @@ public class Windows2KFileExplorerApp extends Windows2KApp {
 		
 		frame.setBounds(10, 20, 600, 500);
 		frame.setVisible(true);
-		try {
-			frame.setSelected(true);
-		} catch (PropertyVetoException e) {}
 		frame.setContentPane(new JDesktopPane());
 		frame.getContentPane().setBounds(0, 0, frame.getWidth(), frame.getHeight());
 		frame.getContentPane().setBackground(Color.GRAY);
