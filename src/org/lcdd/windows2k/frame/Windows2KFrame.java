@@ -25,7 +25,7 @@ public class Windows2KFrame extends JFrame implements ComponentListener {
 		desktop = new Windows2KFrameDesktop(this);
 		super.setContentPane(desktop);
 		taskBar = new Windows2KTaskBar(this);
-		super.getContentPane().add(taskBar);
+		desktop.add(taskBar);
 		
 		super.setVisible(true);
 	}
