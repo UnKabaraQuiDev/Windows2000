@@ -1,14 +1,19 @@
 package org.lcdd.windows2k.frame.desktop.taskbar;
 
 import java.awt.Color;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JToolTip;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
 import org.lcdd.windows2k.frame.Windows2KFrame;
+import org.lcdd.windows2k.frame.apps.Windows2KApp;
+import org.lcdd.windows2k.utils.Utils;
 
 @SuppressWarnings("serial")
 public class Windows2KTaskBar extends JPanel {
@@ -22,10 +27,39 @@ public class Windows2KTaskBar extends JPanel {
 		
 		updateLocation();
 		
+		super.setAlignmentX(SwingConstants.RIGHT);
+		
 		startMenu.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.GRAY, Color.DARK_GRAY));
 		startMenu.setBounds(0, 0, 80, 30);
 		startMenu.setVisible(true);
 		super.add(startMenu);
+		
+		int i = 0;
+		for(Windows2KApp app : frame.apps) {
+			JLabel label = new JLabel(new ImageIcon(Utils.getScaledImage(app.icon.getImage(), 30, 30)));
+			JToolTip toolTip = label.createToolTip();
+			toolTip.setTipText(app.name);
+			label.addMouseListener(new MouseListener() {
+				@Override
+				public void mouseReleased(MouseEvent e) {}
+				@Override
+				public void mousePressed(MouseEvent e) {}
+				@Override
+				public void mouseExited(MouseEvent e) {}
+				@Override
+				public void mouseEntered(MouseEvent e) {}
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					app.createFrame();
+				}
+			});
+			//label.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.GRAY, Color.DARK_GRAY));
+			label.setBounds(80+(i*30), 0, 30, 30);
+			label.setVisible(true);
+			super.add(label);
+			
+			i++;
+		}
 		
 		hour.setVerticalAlignment(SwingConstants.CENTER);
 		hour.setHorizontalAlignment(SwingConstants.CENTER);

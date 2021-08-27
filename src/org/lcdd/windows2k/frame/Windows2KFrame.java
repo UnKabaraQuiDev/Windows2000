@@ -8,14 +8,15 @@ import java.util.List;
 
 import javax.swing.JFrame;
 
-import org.lcdd.windows2k.back.ClockManager;
 import org.lcdd.windows2k.frame.apps.Windows2KApp;
+import org.lcdd.windows2k.frame.apps.Windows2KFileExplorerApp;
+import org.lcdd.windows2k.back.ClockManager;
 import org.lcdd.windows2k.frame.desktop.Windows2KFrameDesktop;
 import org.lcdd.windows2k.frame.desktop.taskbar.Windows2KTaskBar;
 
 @SuppressWarnings("serial")
 public class Windows2KFrame extends JFrame implements ComponentListener {
-
+	
 	public Windows2KFrameDesktop desktop;
 	public Windows2KTaskBar taskBar;
 	
@@ -30,12 +31,15 @@ public class Windows2KFrame extends JFrame implements ComponentListener {
 		
 		super.addComponentListener(this);
 		
+		apps.add(new Windows2KFileExplorerApp());
+		
 		desktop = new Windows2KFrameDesktop(this);
 		super.setContentPane(desktop);
 		taskBar = new Windows2KTaskBar(this);
 		desktop.add(taskBar);
 		
 		super.setVisible(true);
+		
 		clockManager = new ClockManager();
 	}
 
