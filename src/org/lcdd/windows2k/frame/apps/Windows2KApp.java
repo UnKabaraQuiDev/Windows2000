@@ -1,6 +1,7 @@
 package org.lcdd.windows2k.frame.apps;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -25,11 +26,12 @@ public abstract class Windows2KApp {
 	public abstract JInternalFrame createFrame();
 	
 	protected void registerFrame(JInternalFrame frame) {
+		Windows2KMain.frame.desktop.add(frame);
+		System.out.println(Arrays.toString(Windows2KMain.frame.desktop.getComponents()));
 		frame.addInternalFrameListener(new InternalFrameListener() {
 			@Override
 			public void internalFrameOpened(InternalFrameEvent e) {
 				openedFrames.add(frame);
-				Windows2KMain.frame.desktop.add(frame);
 			}
 			@Override
 			public void internalFrameIconified(InternalFrameEvent e) {}

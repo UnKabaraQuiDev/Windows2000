@@ -78,6 +78,7 @@ public class Windows2KTaskBar extends JPanel {
 	
 	public void updateLocation() {
 		super.setBounds(0, (int) frame.desktop.getBounds().getHeight()-40, (int) frame.desktop.getBounds().getWidth(), 40);
+		
 		hour.setBounds((int) super.getBounds().getWidth()-70, 0, 70, 40);
 		startMenu.setBounds(0, 0, 80, 40);
 		
