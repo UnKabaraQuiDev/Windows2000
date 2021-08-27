@@ -1,7 +1,6 @@
 package org.lcdd.windows2k.frame.desktop;
 
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.swing.JDesktopPane;
@@ -16,16 +15,10 @@ public class Windows2KFrameDesktop extends JDesktopPane {
 	
 	public Windows2KFrameDesktop(Windows2KFrame frame, Image img) {
 		super.setBounds(0, 0, (int) frame.getBounds().getWidth(), (int) frame.getBounds().getHeight());
-		super.setBackground(Color.BLACK);
+		super.setBackground(new Color(57, 107, 165));
 		
 		this.image = img;
 		this.frame = frame;
-	}
-	
-	@Override
-	protected void paintComponent(Graphics g) {
-		g.drawImage((Image) image, 0, 0, Color.BLUE, null);
-		super.paintComponent(g);
 	}
 	
 	public Image getImage() {return image;}
