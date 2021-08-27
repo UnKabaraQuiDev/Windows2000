@@ -9,6 +9,7 @@ import java.util.List;
 import javax.swing.JFrame;
 
 import org.lcdd.windows2k.frame.apps.Windows2KApp;
+import org.lcdd.windows2k.back.ClockManager;
 import org.lcdd.windows2k.frame.desktop.Windows2KFrameDesktop;
 import org.lcdd.windows2k.frame.desktop.taskbar.Windows2KTaskBar;
 
@@ -33,6 +34,7 @@ public class Windows2KFrame extends JFrame implements ComponentListener {
 		desktop.add(taskBar);
 		
 		super.setVisible(true);
+		ClockManager clockManager = new ClockManager();
 	}
 
 	@Override
