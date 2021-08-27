@@ -14,7 +14,7 @@ public class Windows2KFrameDesktop extends JDesktopPane {
 	public Windows2KFrameDesktop(Windows2KFrame frame) {
 		this.frame = frame;
 		
-		//super.setDragMode(JDesktopPane.OUTLINE_DRAG_MODE);
+		super.setDragMode(JDesktopPane.OUTLINE_DRAG_MODE);
 		super.setBounds(0, 0, (int) frame.getBounds().getWidth(), (int) frame.getBounds().getHeight());
 		super.setBackground(new Color(57, 107, 165));
 		super.setVisible(true);
