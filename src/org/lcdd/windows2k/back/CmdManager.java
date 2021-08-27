@@ -7,7 +7,7 @@ public class CmdManager {
 
     private HashMap<String,String> randomCommands = new HashMap<>();
     private List<String> command = Arrays.asList("dir","cd","help","echo");
-    private File activeDirectory = new File(System.getProperty("user.home"));
+    public File activeDirectory = new File(System.getProperty("user.home"));
 
     public CmdManager(){
         randomizeCommands();
