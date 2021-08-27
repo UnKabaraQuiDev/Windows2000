@@ -3,6 +3,8 @@ package org.lcdd.windows2k.frame.desktop.taskbar;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -21,15 +23,14 @@ public class Windows2KTaskBar extends JPanel {
 	private JLabel startMenu = new JLabel(new ImageIcon("./img/start_main.jpg"));
 	private JLabel hour = new JLabel("<html>hour</html>");
 	private Windows2KFrame frame;
+	private List<JLabel> appLabels = new ArrayList<>();
 	
 	public Windows2KTaskBar(Windows2KFrame frame) {
 		this.frame = frame;
 		
 		updateLocation();
 		
-		super.setAlignmentX(SwingConstants.RIGHT);
-		
-		startMenu.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.GRAY, Color.DARK_GRAY));
+		startMenu.setBorder(new BevelBorder(BevelBorder.RAISED, Color.GRAY, Color.DARK_GRAY));
 		startMenu.setBounds(0, 0, 80, 30);
 		startMenu.setVisible(true);
 		super.add(startMenu);
@@ -53,30 +54,38 @@ public class Windows2KTaskBar extends JPanel {
 					app.createFrame();
 				}
 			});
-			//label.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.GRAY, Color.DARK_GRAY));
+			label.setBorder(new BevelBorder(BevelBorder.RAISED, Color.GRAY, Color.DARK_GRAY));
 			label.setBounds(80+(i*30), 0, 30, 30);
 			label.setVisible(true);
 			super.add(label);
+			
+			appLabels.add(label);
 			
 			i++;
 		}
 		
 		hour.setVerticalAlignment(SwingConstants.CENTER);
 		hour.setHorizontalAlignment(SwingConstants.CENTER);
-		hour.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.GRAY, Color.DARK_GRAY));
+		hour.setBorder(new BevelBorder(BevelBorder.RAISED, Color.GRAY, Color.DARK_GRAY));
 		hour.setBounds((int) super.getBounds().getWidth()-70, 0, 70, 30);
 		hour.setVisible(true);
 		super.add(hour);
 		
 		super.setBackground(Color.LIGHT_GRAY);
 		super.setVisible(true);
-		super.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.GRAY, Color.DARK_GRAY));
+		super.setBorder(new BevelBorder(BevelBorder.RAISED, Color.GRAY, Color.DARK_GRAY));
 	}
 	
 	public void updateLocation() {
 		super.setBounds(0, (int) frame.desktop.getBounds().getHeight()-30, (int) frame.desktop.getBounds().getWidth(), 30);
 		hour.setBounds((int) super.getBounds().getWidth()-70, 0, 70, 30);
 		startMenu.setBounds(0, 0, 80, 30);
+		
+		int i = 0;
+		for(JLabel label : appLabels) {
+			label.setBounds(80+(i*30), 0, 30, 30);
+			i++;
+		}
 	}
 	
 	public String getHour() {return hour.getText();}
