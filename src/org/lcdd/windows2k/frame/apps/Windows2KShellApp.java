@@ -7,7 +7,7 @@ import javax.swing.*;
 public class Windows2KShellApp extends Windows2KApp {
 
     public Windows2KShellApp() {
-        super("Terminal", new ImageIcon("./img/cmd.ico"));
+        super("Terminal", new ImageIcon("./img/cmd.png"));
     }
 
     private CmdManager manager = new CmdManager();

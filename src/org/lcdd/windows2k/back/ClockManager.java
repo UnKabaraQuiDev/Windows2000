@@ -17,12 +17,13 @@ public class ClockManager {
                     public void run() {
                         addTime(60000L);
                         Date date = new Date(time);
-                        String hour = date.toString().substring(11,16) + "<br>" + date.toString().substring(4,7) + "/" + date.toString().substring(8,10);
+                        System.out.println(date);
+                        String hour = date.toString().substring(11,16) + "<br>" + date.toString().substring(4,7) + "/" + date.toString().substring(8,10)+ " "+ date.toString().substring(24);
                         System.out.println(hour);
 
                         Windows2KMain.frame.taskBar.setHour(hour);
                     }
-                }, new Date(System.currentTimeMillis()+60000), 60000);
+                }, new Date(System.currentTimeMillis()+100), 60000);
         // a minute
 
     }
