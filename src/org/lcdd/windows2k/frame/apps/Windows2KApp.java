@@ -27,12 +27,13 @@ public abstract class Windows2KApp {
 	
 	protected void registerFrame(JInternalFrame frame) {
 		Windows2KMain.frame.desktop.add(frame);
-		System.out.println(Arrays.toString(Windows2KMain.frame.desktop.getComponents()));
+		openedFrames.add(frame);
+		frame.setLocation(frame.getX()+(openedFrames.size()*20), frame.getY()+(openedFrames.size()*20));
+		frame.toFront();
+		
 		frame.addInternalFrameListener(new InternalFrameListener() {
 			@Override
-			public void internalFrameOpened(InternalFrameEvent e) {
-				openedFrames.add(frame);
-			}
+			public void internalFrameOpened(InternalFrameEvent e) {}
 			@Override
 			public void internalFrameIconified(InternalFrameEvent e) {}
 			@Override
