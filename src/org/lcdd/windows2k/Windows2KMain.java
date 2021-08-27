@@ -10,7 +10,7 @@ public class Windows2KMain {
 	
 	public static void main(String[] args) {
 		try {
-			frame = new Windows2KFrame("./img/bg.png");
+			frame = new Windows2KFrame();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

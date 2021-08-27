@@ -15,7 +15,7 @@ public class Windows2KFrame extends JFrame implements ComponentListener {
 	public Windows2KFrameDesktop desktop;
 	public Windows2KTaskBar taskBar;
 	
-	public Windows2KFrame(String background) throws IOException {
+	public Windows2KFrame() throws IOException {
 		super("Windows 2000 Simulation");
 		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		super.setBounds(0, 0, 1250, 720);
