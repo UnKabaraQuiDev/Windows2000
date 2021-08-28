@@ -22,6 +22,7 @@ public class Windows2KAudioPlayerApp extends Windows2KApp{
         text.setBounds(0,600-200,720,600);
 
         button.setBackground(Color.BLACK);
+        button.setIcon(new ImageIcon("./img/play.jpg"));
         button.addActionListener(e -> {
             if(!isPlaying) {
                 manager.playAudioFile(new File("./img/music.wav"));

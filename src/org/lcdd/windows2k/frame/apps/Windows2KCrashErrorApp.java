@@ -3,6 +3,7 @@ package org.lcdd.windows2k.frame.apps;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.beans.PropertyVetoException;
+import java.io.File;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
@@ -13,12 +14,14 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import org.lcdd.windows2k.Windows2KMain;
+import org.lcdd.windows2k.back.AudioPlayerManager;
 import org.lcdd.windows2k.frame.Windows2KFrame;
 import org.lcdd.windows2k.frame.desktop.Windows2KFrameDesktop;
 
 public class Windows2KCrashErrorApp extends Windows2KApp {
 
-	public static String[] messages = {"Faites gagner Freezman & Poucy", "Oops ! Crash :O", ":lp_triste: ca a planté", "Windows crashed :("};
+	public static String[] messages = {"Faites gagner Freezman & Poucy", "Oops ! Crash :O", ":lp_triste: ca a planté", "Windows crashed :(","Programme.exe ne répond pas"};
+	private AudioPlayerManager manager = new AudioPlayerManager();
 	
 	public Windows2KCrashErrorApp() {
 		super("Ooops", new ImageIcon("./img/My_Computer.png"));
@@ -48,8 +51,9 @@ public class Windows2KCrashErrorApp extends Windows2KApp {
 							
 							intF.moveToFront();
 							intF.setSelected(true);
+							manager.playAudioFile(new File("./img/chord.wav"));
 							
-							Thread.sleep(25);
+							Thread.sleep(20);
 						} catch (Exception e1) {
 							System.err.println("Une erreur est survenue, mais c'est pas grave x)");
 						}
