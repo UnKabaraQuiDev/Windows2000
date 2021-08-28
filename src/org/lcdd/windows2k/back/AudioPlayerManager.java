@@ -4,10 +4,14 @@ import javax.sound.sampled.*;
 import java.io.*;
 
 public class AudioPlayerManager {
+	
 	public AudioInputStream stream;
     public AudioFormat format;
     public DataLine.Info info;
     public Clip clip;
+    
+    public Runnable end;
+    
     public void playAudioFile(File f){
         try {
 
@@ -17,6 +21,16 @@ public class AudioPlayerManager {
             clip = (Clip) AudioSystem.getLine(info);
             clip.open(stream);
             clip.start();
+            clip.addLineListener(new LineListener() {
+				@Override
+				public void update(LineEvent event) {
+					if(event.getFramePosition() == clip.getFrameLength()) {
+						if(end != null) {
+							end.run();
+						}
+					}
+				}
+			});
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -25,6 +39,7 @@ public class AudioPlayerManager {
     public void stopAudioFile(){
         if(clip != null){
             clip.stop();
+            end.run();
         }
     }
 }

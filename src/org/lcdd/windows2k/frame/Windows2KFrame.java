@@ -68,6 +68,12 @@ public class Windows2KFrame extends JFrame implements ComponentListener, WindowL
 	@Override
 	public void windowClosing(WindowEvent e) {
 		audio.playAudioFile(new File("./img/out.wav"));
+		audio.end = new Runnable() {
+			@Override
+			public void run() {
+				System.exit(0);
+			}
+		};
 	}
 	@Override public void windowClosed(WindowEvent e) {}
 	@Override public void windowIconified(WindowEvent e) {}
