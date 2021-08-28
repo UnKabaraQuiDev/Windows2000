@@ -106,7 +106,7 @@ public class Windows2KInstaller extends Windows2KApp {
 								}
 							}
 						}
-					}, 0, 10);
+					}, 0, 50);
 				}else{
 					Windows2KMain.frame.dispatchEvent(new WindowEvent(Windows2KMain.frame, WindowEvent.WINDOW_CLOSING));
                 }

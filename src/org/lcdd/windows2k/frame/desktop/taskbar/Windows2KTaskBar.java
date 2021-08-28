@@ -49,6 +49,7 @@ public class Windows2KTaskBar extends JDesktopPane {
 		
 		int i = 0;
 		for(Windows2KApp app : frame.apps) {
+			if(app.name.equals("Windows installer"))continue;
 			JLabel label = new JLabel(new ImageIcon(Utils.getScaledImage(app.icon.getImage(), 40, 40)));
 			label.addMouseListener(new MouseListener() {
 				@Override
