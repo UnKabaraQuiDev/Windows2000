@@ -33,23 +33,39 @@ public class Windows2KTaskBar extends JDesktopPane {
 		
 		int i = 0;
 		for(Windows2KApp app : frame.apps) {
-			JLabel label = new JLabel(new ImageIcon(Utils.getScaledImage(app.icon.getImage(), 40, 40)));
-			label.addMouseListener(new MouseListener() {
-				@Override public void mouseReleased(MouseEvent e) {}
-				@Override public void mousePressed(MouseEvent e) {}
-				@Override public void mouseExited(MouseEvent e) {}
-				@Override public void mouseEntered(MouseEvent e) {}
-				@Override
-				public void mouseClicked(MouseEvent e) {
-					app.createFrame();
-				}
-			});
-			label.setBounds(80+(i*40)+10, 0, 40, 40);
-			label.setVisible(true);
-			super.add(label);
-			
-			appLabels.add(label);
-			
+			System.out.println(app.name);
+			/*if(app.name.equals("Windows installer")) {
+				app.createFrame();
+				continue;
+			}*/
+				JLabel label = new JLabel(new ImageIcon(Utils.getScaledImage(app.icon.getImage(), 40, 40)));
+				label.addMouseListener(new MouseListener() {
+					@Override
+					public void mouseReleased(MouseEvent e) {
+					}
+
+					@Override
+					public void mousePressed(MouseEvent e) {
+					}
+
+					@Override
+					public void mouseExited(MouseEvent e) {
+					}
+
+					@Override
+					public void mouseEntered(MouseEvent e) {
+					}
+
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						app.createFrame();
+					}
+				});
+				label.setBounds(80 + (i * 40) + 10, 0, 40, 40);
+				label.setVisible(true);
+				super.add(label);
+
+				appLabels.add(label);
 			i++;
 		}
 		

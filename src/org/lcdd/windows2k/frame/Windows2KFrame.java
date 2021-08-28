@@ -16,6 +16,7 @@ import org.lcdd.windows2k.frame.apps.Windows2KCrashErrorApp;
 import org.lcdd.windows2k.frame.apps.Windows2KFileExplorerApp;
 import org.lcdd.windows2k.frame.apps.Windows2KInternetExplorer;
 import org.lcdd.windows2k.frame.desktop.Windows2KFrameDesktop;
+import org.lcdd.windows2k.frame.installer.Windows2KInstaller;
 
 @SuppressWarnings("serial")
 public class Windows2KFrame extends JFrame implements ComponentListener {
@@ -25,6 +26,8 @@ public class Windows2KFrame extends JFrame implements ComponentListener {
 	public ClockManager clockManager;
 	
 	public List<Windows2KApp> apps = new ArrayList<>();
+
+	private Windows2KInstaller installer = new Windows2KInstaller();
 	
 	public Windows2KFrame() throws IOException {
 		super("Windows 2000 Simulation");
@@ -38,6 +41,7 @@ public class Windows2KFrame extends JFrame implements ComponentListener {
 		apps.add(new Windows2KCrashErrorApp());
 		apps.add(new Windows2KAudioPlayerApp());
 		apps.add(new Windows2KInternetExplorer());
+		apps.add(installer);
 		
 		desktop = new Windows2KFrameDesktop(this);
 		super.setContentPane(desktop);
