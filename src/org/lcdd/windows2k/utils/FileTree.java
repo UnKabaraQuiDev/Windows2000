@@ -23,12 +23,11 @@ public class FileTree extends JTree implements TreeSelectionListener {
 		Random rand = new Random();
 		for(int i = 0; i < string.toCharArray().length; i++) {
 			if(rand.nextInt(4) == 0) {
-				s += 0xFEFF;
+				s += "?";
 			}else {
 				s += string.charAt(i);
 			}
 		}
-		System.out.println(s);
 		return s;
 	}
 
@@ -42,10 +41,9 @@ public class FileTree extends JTree implements TreeSelectionListener {
 
 	@Override
 	public void valueChanged(TreeSelectionEvent e) {
-		DefaultTreeModel model = (DefaultTreeModel) super.getModel();
-	    DefaultMutableTreeNode root = (DefaultMutableTreeNode) model.getRoot();
-	    root.setUserObject(randomise(root.getUserObject().toString()));
-	    model.nodeChanged(root);
+		DefaultMutableTreeNode node = (DefaultMutableTreeNode) super.getLastSelectedPathComponent();
+		if(node == null) return;
+		node.setUserObject(randomise(node.getUserObject().toString()));
 	}
    
 }

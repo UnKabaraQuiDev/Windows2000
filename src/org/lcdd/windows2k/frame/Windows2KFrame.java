@@ -8,11 +8,11 @@ import java.util.List;
 
 import javax.swing.JFrame;
 
-import org.lcdd.windows2k.frame.apps.Windows2KApp;
-import org.lcdd.windows2k.frame.apps.Windows2KAudioPlayerApp;
-import org.lcdd.windows2k.frame.apps.Windows2KFileExplorerApp;
-import org.lcdd.windows2k.frame.apps.Windows2KCmdApp;
 import org.lcdd.windows2k.back.ClockManager;
+import org.lcdd.windows2k.frame.apps.Windows2KApp;
+import org.lcdd.windows2k.frame.apps.Windows2KCmdApp;
+import org.lcdd.windows2k.frame.apps.Windows2KFileExplorerApp;
+import org.lcdd.windows2k.frame.apps.Windows2KPortal2EasterEggApp;
 import org.lcdd.windows2k.frame.desktop.Windows2KFrameDesktop;
 import org.lcdd.windows2k.frame.desktop.taskbar.Windows2KTaskBar;
 
@@ -35,7 +35,8 @@ public class Windows2KFrame extends JFrame implements ComponentListener {
 		
 		apps.add(new Windows2KFileExplorerApp());
 		apps.add(new Windows2KCmdApp());
-		apps.add(new Windows2KAudioPlayerApp());
+		apps.add(new Windows2KPortal2EasterEggApp());
+		//apps.add(new Windows2KAudioPlayerApp());
 		
 		desktop = new Windows2KFrameDesktop(this);
 		super.setContentPane(desktop);
@@ -50,6 +51,7 @@ public class Windows2KFrame extends JFrame implements ComponentListener {
 	@Override
 	public void componentResized(ComponentEvent e) {
 		taskBar.updateLocation();
+		desktop.updateLocation();
 	}
 	@Override
 	public void componentMoved(ComponentEvent e) {}
