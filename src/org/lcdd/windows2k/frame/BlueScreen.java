@@ -1,11 +1,13 @@
 package org.lcdd.windows2k.frame;
 
 import org.lcdd.windows2k.Windows2KMain;
+import org.lcdd.windows2k.back.AudioPlayerManager;
 import org.lcdd.windows2k.frame.desktop.Windows2KFrameDesktop;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
+import java.io.File;
 import java.io.IOException;
 
 public class BlueScreen {
@@ -26,6 +28,8 @@ public class BlueScreen {
         pane.add(text);
 
         pane.setVisible(true);
+        AudioPlayerManager manager = new AudioPlayerManager();
+        manager.playAudioFile(new File("./assets/bsod.wav"));
         return pane;
     }
     public static void crashIn(long delay){

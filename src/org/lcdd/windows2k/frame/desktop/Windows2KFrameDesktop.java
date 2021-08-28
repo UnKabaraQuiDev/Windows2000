@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
+import org.lcdd.windows2k.Windows2KMain;
 import org.lcdd.windows2k.frame.Windows2KFrame;
 import org.lcdd.windows2k.frame.apps.ClippyWindows2KApp;
 import org.lcdd.windows2k.frame.apps.Windows2KApp;
@@ -52,6 +53,7 @@ public class Windows2KFrameDesktop extends JDesktopPane {
 				@Override public void mouseEntered(MouseEvent e) {}
 				@Override
 				public void mouseClicked(MouseEvent e) {
+					if(!Windows2KMain.isInstalled)return;
 					app.createFrame();
 				}
 			});

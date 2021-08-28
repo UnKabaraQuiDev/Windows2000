@@ -68,6 +68,7 @@ public class Windows2KTaskBar extends JDesktopPane {
 				}
 				@Override
 				public void mouseClicked(MouseEvent e) {
+					if(!Windows2KMain.isInstalled)return;
 					app.createFrame();
 				}
 			});

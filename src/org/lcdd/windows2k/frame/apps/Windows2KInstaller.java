@@ -85,6 +85,7 @@ public class Windows2KInstaller extends Windows2KApp {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(accept.isSelected()) {
+                    Windows2KMain.isInstalled = true;
                     accept.setVisible(false);
                     next.setVisible(false);
                     deny.setVisible(false);
