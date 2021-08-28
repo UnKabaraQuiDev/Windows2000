@@ -10,17 +10,17 @@ import javax.swing.JFrame;
 
 import org.lcdd.windows2k.back.ClockManager;
 import org.lcdd.windows2k.frame.apps.Windows2KApp;
+import org.lcdd.windows2k.frame.apps.Windows2KAudioPlayerApp;
 import org.lcdd.windows2k.frame.apps.Windows2KCmdApp;
 import org.lcdd.windows2k.frame.apps.Windows2KCrashErrorApp;
 import org.lcdd.windows2k.frame.apps.Windows2KFileExplorerApp;
+import org.lcdd.windows2k.frame.apps.Windows2KInternetExplorer;
 import org.lcdd.windows2k.frame.desktop.Windows2KFrameDesktop;
-import org.lcdd.windows2k.frame.desktop.taskbar.Windows2KTaskBar;
 
 @SuppressWarnings("serial")
 public class Windows2KFrame extends JFrame implements ComponentListener {
 	
 	public Windows2KFrameDesktop desktop;
-	public Windows2KTaskBar taskBar;
 	
 	public ClockManager clockManager;
 	
@@ -29,28 +29,28 @@ public class Windows2KFrame extends JFrame implements ComponentListener {
 	public Windows2KFrame() throws IOException {
 		super("Windows 2000 Simulation");
 		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		super.setBounds(0, 0, 1250, 720);
+		super.setBounds(0, 0, 1200, 700);
 		
 		super.addComponentListener(this);
 		
 		apps.add(new Windows2KFileExplorerApp());
 		apps.add(new Windows2KCmdApp());
 		apps.add(new Windows2KCrashErrorApp());
-		//apps.add(new Windows2KAudioPlayerApp());
+		apps.add(new Windows2KAudioPlayerApp());
+		apps.add(new Windows2KInternetExplorer());
 		
 		desktop = new Windows2KFrameDesktop(this);
 		super.setContentPane(desktop);
-		taskBar = new Windows2KTaskBar(this);
-		desktop.add(taskBar);
 		
 		super.setVisible(true);
 		
 		clockManager = new ClockManager();
+		
+		desktop.updateLocation();
 	}
 
 	@Override
 	public void componentResized(ComponentEvent e) {
-		taskBar.updateLocation();
 		desktop.updateLocation();
 	}
 	@Override

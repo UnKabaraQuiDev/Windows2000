@@ -10,28 +10,32 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
-import javax.swing.JToolTip;
 
 import org.lcdd.windows2k.frame.Windows2KFrame;
 import org.lcdd.windows2k.frame.apps.Windows2KApp;
+import org.lcdd.windows2k.frame.desktop.taskbar.Windows2KTaskBar;
 import org.lcdd.windows2k.utils.PaintRunnable;
 import org.lcdd.windows2k.utils.Utils;
 
 @SuppressWarnings("serial")
 public class Windows2KFrameDesktop extends JDesktopPane {
 	
+	@SuppressWarnings("unused")
 	private Windows2KFrame frame;
+	
+	public Windows2KTaskBar taskBar;
 	private List<JLabel> appLabels = new ArrayList<>();
 	public List<PaintRunnable> paints = new ArrayList<>();
 	
 	public Windows2KFrameDesktop(Windows2KFrame frame) {
 		this.frame = frame;
 		
+		taskBar = new Windows2KTaskBar(frame);
+		super.add(taskBar);
+		
 		int i = 0;
 		for(Windows2KApp app : frame.apps) {
 			JLabel label = new JLabel(new ImageIcon(Utils.getScaledImage(app.icon.getImage(), 80, 80)));
-			JToolTip toolTip = label.createToolTip();
-			toolTip.setTipText(app.name);
 			label.addMouseListener(new MouseListener() {
 				@Override public void mouseReleased(MouseEvent e) {}
 				@Override public void mousePressed(MouseEvent e) {}
@@ -43,7 +47,7 @@ public class Windows2KFrameDesktop extends JDesktopPane {
 				}
 			});
 			label.setBackground(new Color(0, 0, 0, 0));
-			label.setBounds(40+(i*80)+20, 0, 80, 80);
+			label.setBounds(40+(i*80)+20, 40, 80, 80);
 			label.setVisible(true);
 			super.add(label);
 			
@@ -59,9 +63,11 @@ public class Windows2KFrameDesktop extends JDesktopPane {
 	}
 	
 	public void updateLocation() {
+		taskBar.updateLocation();
+		
 		int i = 0;
 		for(JLabel label : appLabels) {
-			label.setBounds(40+(i*80)+20, 0, 80, 80);
+			label.setBounds(40+(i*80)+20, 40, 80, 80);
 			i++;
 		}
 	}

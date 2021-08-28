@@ -21,7 +21,7 @@ public class ClockManager {
                         String hour = date.toString().substring(11,16) + "<br>" + date.toString().substring(4,7) + "/" + date.toString().substring(8,10)+ " "+ date.toString().substring(24);
                         System.out.println(hour);
 
-                        Windows2KMain.frame.taskBar.setHour(hour);
+                        Windows2KMain.frame.desktop.taskBar.setHour(hour);
                     }
                 }, new Date(System.currentTimeMillis()+100), 60000);
         // a minute
