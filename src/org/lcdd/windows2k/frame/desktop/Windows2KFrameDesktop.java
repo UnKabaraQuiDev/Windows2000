@@ -10,6 +10,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 import org.lcdd.windows2k.frame.Windows2KFrame;
 import org.lcdd.windows2k.frame.apps.Windows2KApp;
@@ -36,7 +37,7 @@ public class Windows2KFrameDesktop extends JDesktopPane {
 		int i = 0;
 		for(Windows2KApp app : frame.apps) {
 			//if(app.name.equals("Windows installer"))continue;
-			JLabel label = new JLabel(new ImageIcon(Utils.getScaledImage(app.icon.getImage(), 80, 80)));
+			JLabel label = new JLabel(new ImageIcon(Utils.getScaledImage(app.icon.getImage(), 100, 100)));
 			label.addMouseListener(new MouseListener() {
 				@Override public void mouseReleased(MouseEvent e) {}
 				@Override public void mousePressed(MouseEvent e) {}
@@ -47,8 +48,18 @@ public class Windows2KFrameDesktop extends JDesktopPane {
 					app.createFrame();
 				}
 			});
+			label.setHorizontalAlignment(SwingConstants.CENTER);
 			label.setBackground(new Color(0, 0, 0, 0));
-			label.setBounds(40+(i*80)+20, 40, 80, 80);
+			label.setBounds(40+(i*(100+20+20)), 40, 100+20, 100+30);
+			
+			JLabel text = new JLabel(app.name);
+			text.setHorizontalAlignment(SwingConstants.CENTER);
+			text.setBounds(0, 115, 100+20, 15);
+			text.setForeground(Color.WHITE);
+			text.setBackground(new Color(0, 0, 0, 0));
+			text.setVisible(true);
+			label.add(text);
+			
 			label.setVisible(true);
 			super.add(label);
 			
@@ -68,7 +79,7 @@ public class Windows2KFrameDesktop extends JDesktopPane {
 		
 		int i = 0;
 		for(JLabel label : appLabels) {
-			label.setBounds(40+(i*80)+20, 40, 80, 80);
+			label.setBounds(40+(i*(100+20+20)), 40, 100+20, 100+30);
 			i++;
 		}
 	}

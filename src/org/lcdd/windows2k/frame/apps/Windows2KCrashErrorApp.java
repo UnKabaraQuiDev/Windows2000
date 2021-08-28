@@ -20,11 +20,19 @@ import org.lcdd.windows2k.frame.desktop.Windows2KFrameDesktop;
 
 public class Windows2KCrashErrorApp extends Windows2KApp {
 
-	public static String[] messages = {"Faites gagner Freezman & Poucy", "Oops ! Crash :O", ":lp_triste: ca a planté", "Windows crashed :(","Programme.exe ne répond pas"};
+	public static String[] messages = {
+			"Faites gagner Freezman & Poucy",
+			"Oops ! Crash :O",
+			":lp_triste: Ouïndows a planté",
+			"Windows crashed :(",
+			"Programme.exe ne répond pas",
+			"Axel s'est endormi je pense",
+			"MACtul s'est acheté un MACbook et <br>n'a donc plus besoin de Windows <br>qui vient de crash"
+	};
 	private AudioPlayerManager manager = new AudioPlayerManager();
 	
 	public Windows2KCrashErrorApp() {
-		super("Ooops", new ImageIcon("./img/My_Computer.png"));
+		super("Settings", new ImageIcon("./img/My_Computer.png"));
 	}
 
 	@Override
@@ -41,13 +49,20 @@ public class Windows2KCrashErrorApp extends Windows2KApp {
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
+				int m = 0;
 				for(int i = 0; i < 10; i++) {
 					for(int j = 0; j < 15; j++) {
 						try {
 							int x = rand.nextInt(frame.getWidth()-300);
 							int y = rand.nextInt(frame.getHeight()-225);
-							JInternalFrame intF = createDialog((rand.nextInt(10) != 0 ? "OK" : "RIP"), messages[rand.nextInt(messages.length)], x, y);
+							JInternalFrame intF = createDialog((rand.nextInt(10) != 0 ? "OK" : "RIP"), "<html>"+messages[m]+"</html>", x, y);
 							desk.add(intF);
+							
+							if(m == messages.length -1) {
+								m = 0;
+							}else {
+								m++;
+							}
 							
 							intF.moveToFront();
 							intF.setSelected(true);
