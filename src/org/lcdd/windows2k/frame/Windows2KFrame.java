@@ -2,12 +2,16 @@ package org.lcdd.windows2k.frame;
 
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JFrame;
 
+import org.lcdd.windows2k.back.AudioPlayerManager;
 import org.lcdd.windows2k.back.ClockManager;
 import org.lcdd.windows2k.frame.apps.Windows2KApp;
 import org.lcdd.windows2k.frame.apps.Windows2KAudioPlayerApp;
@@ -18,20 +22,22 @@ import org.lcdd.windows2k.frame.apps.Windows2KInternetExplorer;
 import org.lcdd.windows2k.frame.desktop.Windows2KFrameDesktop;
 
 @SuppressWarnings("serial")
-public class Windows2KFrame extends JFrame implements ComponentListener {
+public class Windows2KFrame extends JFrame implements ComponentListener, WindowListener {
 	
 	public Windows2KFrameDesktop desktop;
 	
+	private AudioPlayerManager audio = new AudioPlayerManager();
 	public ClockManager clockManager;
 	
 	public List<Windows2KApp> apps = new ArrayList<>();
 	
 	public Windows2KFrame() throws IOException {
 		super("Windows 2000 Simulation");
-		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		super.setBounds(0, 0, 1200, 700);
 		
 		super.addComponentListener(this);
+		super.addWindowListener(this);
 		
 		apps.add(new Windows2KFileExplorerApp());
 		apps.add(new Windows2KCmdApp());
@@ -53,11 +59,20 @@ public class Windows2KFrame extends JFrame implements ComponentListener {
 	public void componentResized(ComponentEvent e) {
 		desktop.updateLocation();
 	}
+	@Override public void componentMoved(ComponentEvent e) {}
+	@Override public void componentShown(ComponentEvent e) {}
+	@Override public void componentHidden(ComponentEvent e) {}
+	@Override public void windowOpened(WindowEvent e) {
+		audio.playAudioFile(new File("./img/in.wav"));
+	}
 	@Override
-	public void componentMoved(ComponentEvent e) {}
-	@Override
-	public void componentShown(ComponentEvent e) {}
-	@Override
-	public void componentHidden(ComponentEvent e) {}
+	public void windowClosing(WindowEvent e) {
+		audio.playAudioFile(new File("./img/out.wav"));
+	}
+	@Override public void windowClosed(WindowEvent e) {}
+	@Override public void windowIconified(WindowEvent e) {}
+	@Override public void windowDeiconified(WindowEvent e) {}
+	@Override public void windowActivated(WindowEvent e) {}
+	@Override public void windowDeactivated(WindowEvent e) {}
 	
 }

@@ -4,10 +4,10 @@ import javax.sound.sampled.*;
 import java.io.*;
 
 public class AudioPlayerManager {
-    private AudioInputStream stream;
-    private AudioFormat format;
-    private DataLine.Info info;
-    private Clip clip;
+	public AudioInputStream stream;
+    public AudioFormat format;
+    public DataLine.Info info;
+    public Clip clip;
     public void playAudioFile(File f){
         try {
 
