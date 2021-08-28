@@ -7,10 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
+import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JToolTip;
-import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
 import org.lcdd.windows2k.frame.Windows2KFrame;
@@ -18,7 +16,7 @@ import org.lcdd.windows2k.frame.apps.Windows2KApp;
 import org.lcdd.windows2k.utils.Utils;
 
 @SuppressWarnings("serial")
-public class Windows2KTaskBar extends JPanel {
+public class Windows2KTaskBar extends JDesktopPane {
 
 	private JLabel startMenu = new JLabel(new ImageIcon("./img/start_main.jpg"));
 	private JLabel hour = new JLabel("<html>hour</html>");
@@ -28,8 +26,6 @@ public class Windows2KTaskBar extends JPanel {
 	public Windows2KTaskBar(Windows2KFrame frame) {
 		this.frame = frame;
 		
-		updateLocation();
-		
 		startMenu.setBorder(new BevelBorder(BevelBorder.RAISED, Color.GRAY, Color.DARK_GRAY));
 		startMenu.setBounds(0, 0, 80, 40);
 		startMenu.setVisible(true);
@@ -38,24 +34,17 @@ public class Windows2KTaskBar extends JPanel {
 		int i = 0;
 		for(Windows2KApp app : frame.apps) {
 			JLabel label = new JLabel(new ImageIcon(Utils.getScaledImage(app.icon.getImage(), 40, 40)));
-			JToolTip toolTip = label.createToolTip();
-			toolTip.setTipText(app.name);
 			label.addMouseListener(new MouseListener() {
-				@Override
-				public void mouseReleased(MouseEvent e) {}
-				@Override
-				public void mousePressed(MouseEvent e) {}
-				@Override
-				public void mouseExited(MouseEvent e) {}
-				@Override
-				public void mouseEntered(MouseEvent e) {}
+				@Override public void mouseReleased(MouseEvent e) {}
+				@Override public void mousePressed(MouseEvent e) {}
+				@Override public void mouseExited(MouseEvent e) {}
+				@Override public void mouseEntered(MouseEvent e) {}
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					app.createFrame();
 				}
 			});
-			label.setBorder(new BevelBorder(BevelBorder.RAISED, Color.GRAY, Color.DARK_GRAY));
-			label.setBounds(80+(i*40), 0, 40, 40);
+			label.setBounds(80+(i*40)+10, 0, 40, 40);
 			label.setVisible(true);
 			super.add(label);
 			
@@ -64,16 +53,12 @@ public class Windows2KTaskBar extends JPanel {
 			i++;
 		}
 		
-		hour.setVerticalAlignment(SwingConstants.CENTER);
-		hour.setHorizontalAlignment(SwingConstants.CENTER);
-		hour.setBorder(new BevelBorder(BevelBorder.RAISED, Color.GRAY, Color.DARK_GRAY));
 		hour.setBounds((int) super.getBounds().getWidth()-70, 0, 70, 40);
 		hour.setVisible(true);
 		super.add(hour);
 		
 		super.setBackground(Color.LIGHT_GRAY);
 		super.setVisible(true);
-		super.setBorder(new BevelBorder(BevelBorder.RAISED, Color.GRAY, Color.DARK_GRAY));
 	}
 	
 	public void updateLocation() {
@@ -84,7 +69,7 @@ public class Windows2KTaskBar extends JPanel {
 		
 		int i = 0;
 		for(JLabel label : appLabels) {
-			label.setBounds(80+(i*40), 0, 40, 40);
+			label.setBounds(80+(i*40)+10, 0, 40, 40);
 			i++;
 		}
 	}

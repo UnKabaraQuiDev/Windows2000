@@ -1,7 +1,6 @@
 package org.lcdd.windows2k.frame.apps;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.ImageIcon;
