@@ -1,11 +1,26 @@
 package org.lcdd.windows2k.frame.apps;
 
-import java.awt.*;
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
 import java.beans.PropertyVetoException;
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
-import javax.swing.*;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JDesktopPane;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JProgressBar;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
+
+import org.lcdd.windows2k.Windows2KMain;
 
 public class Windows2KInstaller extends Windows2KApp {
 
@@ -51,11 +66,6 @@ public class Windows2KInstaller extends Windows2KApp {
         deny.setSelected(true);
         deny.setVisible(true);
 
-        bar.setBounds(frame.getWidth()/2,frame.getHeight()/2,frame.getWidth()/2,75);
-        bar.setBackground(Color.BLACK);
-        bar.setVisible(false);
-        frame.getContentPane().add(bar);
-
         accept.setText("Accept the CGU");
         accept.setSize(150, 30);
         accept.setLocation(frame.getWidth()/2, frame.getHeight()-90);
@@ -77,9 +87,28 @@ public class Windows2KInstaller extends Windows2KApp {
                     deny.setVisible(false);
                     cgu.setVisible(false);
                     bar.setVisible(true);
-
+                    
+                    new Timer().schedule(new TimerTask() {
+                    	Random rand = new Random();
+						@Override
+						public void run() {
+							if(bar.getValue() != bar.getMaximum()) {
+								bar.setValue(bar.getValue() +(2 +(rand.nextInt(10) -5)));
+								if(rand.nextInt(100) == 0) {
+									bar.setValue(10);
+								}
+							}else {
+								cancel();
+								try {
+									frame.setClosed(true);
+								} catch (PropertyVetoException e) {
+									System.out.println("Erreur :c");
+								}
+							}
+						}
+					}, 0, 10);
 				}else{
-                    System.exit(0);
+					Windows2KMain.frame.dispatchEvent(new WindowEvent(Windows2KMain.frame, WindowEvent.WINDOW_CLOSING));
                 }
 			}
 		});
@@ -87,11 +116,18 @@ public class Windows2KInstaller extends Windows2KApp {
         group.add(accept);
         group.add(deny);
         
+        bar.setSize(frame.getWidth()/2, 50);
+        bar.setLocation(frame.getWidth()/2 -bar.getWidth()/2, frame.getHeight()/2 -bar.getHeight()/2);
+        bar.setForeground(Color.BLUE);
+        bar.setMaximum(100);
+        bar.setVisible(false);
+        
         frame.setContentPane(new JDesktopPane());
         frame.getContentPane().add(cgu);
         frame.getContentPane().add(deny);
         frame.getContentPane().add(accept);
         frame.getContentPane().add(next);
+        frame.getContentPane().add(bar);
 
         frame.setVisible(true);
         
