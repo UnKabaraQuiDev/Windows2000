@@ -33,14 +33,10 @@ public class Windows2KFrameDesktop extends JDesktopPane {
 			JToolTip toolTip = label.createToolTip();
 			toolTip.setTipText(app.name);
 			label.addMouseListener(new MouseListener() {
-				@Override
-				public void mouseReleased(MouseEvent e) {}
-				@Override
-				public void mousePressed(MouseEvent e) {}
-				@Override
-				public void mouseExited(MouseEvent e) {}
-				@Override
-				public void mouseEntered(MouseEvent e) {}
+				@Override public void mouseReleased(MouseEvent e) {}
+				@Override public void mousePressed(MouseEvent e) {}
+				@Override public void mouseExited(MouseEvent e) {}
+				@Override public void mouseEntered(MouseEvent e) {}
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					app.createFrame();
