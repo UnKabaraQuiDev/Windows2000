@@ -1,19 +1,11 @@
 package org.lcdd.windows2k.frame.apps;
 
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.beans.PropertyVetoException;
 
-import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JDesktopPane;
-import javax.swing.JInternalFrame;
-import javax.swing.JLabel;
-import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 
 public class Windows2KInstaller extends Windows2KApp {
 
@@ -28,6 +20,7 @@ public class Windows2KInstaller extends Windows2KApp {
         
         JLabel cgu = new JLabel();
         JScrollPane scroll = new JScrollPane(cgu);
+        JProgressBar bar = new JProgressBar(0,0,100);
         
         ButtonGroup group = new ButtonGroup();
         JRadioButton accept = new JRadioButton();
@@ -58,6 +51,11 @@ public class Windows2KInstaller extends Windows2KApp {
         deny.setSelected(true);
         deny.setVisible(true);
 
+        bar.setBounds(frame.getWidth()/2,frame.getHeight()/2,frame.getWidth()/2,75);
+        bar.setBackground(Color.BLACK);
+        bar.setVisible(false);
+        frame.getContentPane().add(bar);
+
         accept.setText("Accept the CGU");
         accept.setSize(150, 30);
         accept.setLocation(frame.getWidth()/2, frame.getHeight()-90);
@@ -74,12 +72,15 @@ public class Windows2KInstaller extends Windows2KApp {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(accept.isSelected()) {
-					try {
-						frame.setClosed(true);
-					} catch (PropertyVetoException e1) {
-						System.err.println("Erreur :c");
-					}
-				}
+                    accept.setVisible(false);
+                    next.setVisible(false);
+                    deny.setVisible(false);
+                    cgu.setVisible(false);
+                    bar.setVisible(true);
+
+				}else{
+                    System.exit(0);
+                }
 			}
 		});
 
