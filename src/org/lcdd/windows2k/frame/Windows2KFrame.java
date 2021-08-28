@@ -18,9 +18,9 @@ import org.lcdd.windows2k.frame.apps.Windows2KAudioPlayerApp;
 import org.lcdd.windows2k.frame.apps.Windows2KCmdApp;
 import org.lcdd.windows2k.frame.apps.Windows2KCrashErrorApp;
 import org.lcdd.windows2k.frame.apps.Windows2KFileExplorerApp;
+import org.lcdd.windows2k.frame.apps.Windows2KInstaller;
 import org.lcdd.windows2k.frame.apps.Windows2KInternetExplorer;
 import org.lcdd.windows2k.frame.desktop.Windows2KFrameDesktop;
-import org.lcdd.windows2k.frame.installer.Windows2KInstaller;
 
 @SuppressWarnings("serial")
 public class Windows2KFrame extends JFrame implements ComponentListener, WindowListener {
@@ -37,7 +37,7 @@ public class Windows2KFrame extends JFrame implements ComponentListener, WindowL
 	public Windows2KFrame() throws IOException {
 		super("Windows 2000 Simulation");
 		super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		super.setBounds(0, 0, 1200, 700);
+		super.setBounds(0, 0, 1250, 720);
 		
 		super.addComponentListener(this);
 		super.addWindowListener(this);
@@ -68,6 +68,11 @@ public class Windows2KFrame extends JFrame implements ComponentListener, WindowL
 	@Override public void componentHidden(ComponentEvent e) {}
 	@Override public void windowOpened(WindowEvent e) {
 		audio.playAudioFile(new File("./img/in.wav"));
+		for(Windows2KApp a : apps) {
+			if(a.name.equals("Windows installer")) {
+				a.createFrame();
+			}
+		}
 	}
 	@Override
 	public void windowClosing(WindowEvent e) {

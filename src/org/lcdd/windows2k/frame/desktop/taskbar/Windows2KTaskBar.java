@@ -27,45 +27,51 @@ public class Windows2KTaskBar extends JDesktopPane {
 		this.frame = frame;
 		
 		startMenu.setBorder(new BevelBorder(BevelBorder.RAISED, Color.GRAY, Color.DARK_GRAY));
+		startMenu.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				startMenu.setBorder(new BevelBorder(BevelBorder.RAISED, Color.GRAY, Color.DARK_GRAY));
+			}
+			@Override
+			public void mousePressed(MouseEvent e) {
+				startMenu.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.GRAY, Color.DARK_GRAY));
+			}
+			@Override public void mouseExited(MouseEvent e) {}
+			@Override public void mouseEntered(MouseEvent e) {}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.desktop.startMenuPane.setVisible(!frame.desktop.startMenuPane.isVisible());
+			}
+		});
 		startMenu.setBounds(0, 0, 80, 40);
 		startMenu.setVisible(true);
 		super.add(startMenu);
 		
 		int i = 0;
 		for(Windows2KApp app : frame.apps) {
-			System.out.println(app.name);
-			/*if(app.name.equals("Windows installer")) {
-				app.createFrame();
-				continue;
-			}*/
-				JLabel label = new JLabel(new ImageIcon(Utils.getScaledImage(app.icon.getImage(), 40, 40)));
-				label.addMouseListener(new MouseListener() {
-					@Override
-					public void mouseReleased(MouseEvent e) {
-					}
+			JLabel label = new JLabel(new ImageIcon(Utils.getScaledImage(app.icon.getImage(), 40, 40)));
+			label.addMouseListener(new MouseListener() {
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					label.setBorder(new BevelBorder(BevelBorder.RAISED, Color.GRAY, Color.DARK_GRAY));
+				}
+				@Override
+				public void mousePressed(MouseEvent e) {
+					label.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.GRAY, Color.DARK_GRAY));
+				}
+				@Override public void mouseExited(MouseEvent e) {}
+				@Override public void mouseEntered(MouseEvent e) {}
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					app.createFrame();
+				}
+			});
+			label.setBounds(80 + (i * 40) + 10, 0, 40, 40);
+			label.setBorder(new BevelBorder(BevelBorder.RAISED, Color.GRAY, Color.DARK_GRAY));
+			label.setVisible(true);
+			super.add(label);
 
-					@Override
-					public void mousePressed(MouseEvent e) {
-					}
-
-					@Override
-					public void mouseExited(MouseEvent e) {
-					}
-
-					@Override
-					public void mouseEntered(MouseEvent e) {
-					}
-
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						app.createFrame();
-					}
-				});
-				label.setBounds(80 + (i * 40) + 10, 0, 40, 40);
-				label.setVisible(true);
-				super.add(label);
-
-				appLabels.add(label);
+			appLabels.add(label);
 			i++;
 		}
 		
@@ -85,7 +91,7 @@ public class Windows2KTaskBar extends JDesktopPane {
 		
 		int i = 0;
 		for(JLabel label : appLabels) {
-			label.setBounds(80+(i*40)+10, 0, 40, 40);
+			label.setBounds(85+(i*(40+5)), 0, 40, 40);
 			i++;
 		}
 	}

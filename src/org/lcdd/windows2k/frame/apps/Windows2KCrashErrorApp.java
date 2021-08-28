@@ -2,8 +2,11 @@ package org.lcdd.windows2k.frame.apps;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
 import java.beans.PropertyVetoException;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
@@ -30,6 +33,7 @@ public class Windows2KCrashErrorApp extends Windows2KApp {
 			"MACtul s'est acheté un MACbook et <br>n'a donc plus besoin de Windows <br>qui vient de crash"
 	};
 	private AudioPlayerManager manager = new AudioPlayerManager();
+	private List<Thread> ths = new ArrayList<>();
 	
 	public Windows2KCrashErrorApp() {
 		super("Settings", new ImageIcon("./img/My_Computer.png"));
@@ -46,7 +50,8 @@ public class Windows2KCrashErrorApp extends Windows2KApp {
 		Windows2KFrameDesktop desk = Windows2KMain.frame.desktop;
 		
 		Random rand = new Random();
-		new Thread(new Runnable() {
+		Thread th = new Thread(new Runnable() {
+			final int n = ths.size();
 			@Override
 			public void run() {
 				int m = 0;
@@ -74,8 +79,11 @@ public class Windows2KCrashErrorApp extends Windows2KApp {
 						}
 					}
 				}
+				ths.remove(n);
 			}
-		}).start();
+		});
+		th.start();
+		ths.add(th);
 
 		registerFrame(iframe);
 		return iframe;
@@ -98,9 +106,13 @@ public class Windows2KCrashErrorApp extends Windows2KApp {
 			@Override public void mousePressed(MouseEvent e) {}
 			@Override public void mouseExited(MouseEvent e) {}
 			@Override public void mouseEntered(MouseEvent e) {}
+			@SuppressWarnings("deprecation")
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.exit(0);
+				Windows2KMain.frame.dispatchEvent(new WindowEvent(Windows2KMain.frame, WindowEvent.WINDOW_CLOSING));
+				for(Thread th : ths) {
+					th.stop();
+				}
 			}
 		});
 		btn.setBounds(0,dialog.getHeight()/2, dialog.getWidth(), dialog.getHeight()/2);
