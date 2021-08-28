@@ -47,7 +47,7 @@ public class Windows2KFrameDesktop extends JDesktopPane {
 				}
 			});
 			label.setBackground(new Color(0, 0, 0, 0));
-			label.setBounds(40+(i*80)+20, 0, 80, 80);
+			label.setBounds(40+(i*80)+20, 40, 80, 80);
 			label.setVisible(true);
 			super.add(label);
 			
@@ -67,7 +67,7 @@ public class Windows2KFrameDesktop extends JDesktopPane {
 		
 		int i = 0;
 		for(JLabel label : appLabels) {
-			label.setBounds(40+(i*80)+20, 0, 80, 80);
+			label.setBounds(40+(i*80)+20, 40, 80, 80);
 			i++;
 		}
 	}
