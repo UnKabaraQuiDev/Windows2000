@@ -16,6 +16,7 @@ public abstract class Windows2KApp {
 	
 	public String name;
 	public ImageIcon icon;
+	public boolean visible = true;
 	
 	public Windows2KApp(String name, ImageIcon icon) {
 		this.name = name;

@@ -41,7 +41,8 @@ public class Windows2KFrameDesktop extends JDesktopPane {
 		
 		int i = 0;
 		for(Windows2KApp app : frame.apps) {
-			if(app.name.equals("Windows installer"))continue;
+			if(!app.visible) continue;
+			
 			JLabel label = new JLabel(new ImageIcon(Utils.getScaledImage(app.icon.getImage(), 100, 100)));
 			label.addMouseListener(new MouseListener() {
 				@Override public void mouseReleased(MouseEvent e) {}

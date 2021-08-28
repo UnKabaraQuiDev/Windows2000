@@ -26,6 +26,7 @@ public class Windows2KInstaller extends Windows2KApp {
 
     public Windows2KInstaller() {
         super("Windows installer", new ImageIcon("./assets/cmd.png"));
+        super.visible = false;
     }
 
     @SuppressWarnings("unused")
