@@ -11,7 +11,7 @@ import org.lcdd.windows2k.utils.FileTree;
 public class Windows2KFileExplorerApp extends Windows2KApp {
 
 	public Windows2KFileExplorerApp() {
-		super("File explorer", new ImageIcon("./img/My_Documents.png"));
+		super("File explorer", new ImageIcon("./assets/My_Documents.png"));
 	}
 	
 	@Override

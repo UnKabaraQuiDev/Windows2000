@@ -8,7 +8,7 @@ import java.awt.*;
 public class Windows2KCmdApp extends Windows2KApp {
 
     public Windows2KCmdApp() {
-        super("Terminal", new ImageIcon("./img/cmd.png"));
+        super("Terminal", new ImageIcon("./assets/cmd.png"));
     }
 
     @Override

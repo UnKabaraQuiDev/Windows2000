@@ -36,7 +36,7 @@ public class Windows2KCrashErrorApp extends Windows2KApp {
 	private List<Thread> ths = new ArrayList<>();
 	
 	public Windows2KCrashErrorApp() {
-		super("Settings", new ImageIcon("./img/My_Computer.png"));
+		super("Settings", new ImageIcon("./assets/My_Computer.png"));
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class Windows2KCrashErrorApp extends Windows2KApp {
 							
 							intF.moveToFront();
 							intF.setSelected(true);
-							manager.playAudioFile(new File("./img/chord.wav"));
+							manager.playAudioFile(new File("./assets/chord.wav"));
 							
 							Thread.sleep(20);
 						} catch (Exception e1) {

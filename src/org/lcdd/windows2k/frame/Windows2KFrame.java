@@ -67,7 +67,7 @@ public class Windows2KFrame extends JFrame implements ComponentListener, WindowL
 	@Override public void componentShown(ComponentEvent e) {}
 	@Override public void componentHidden(ComponentEvent e) {}
 	@Override public void windowOpened(WindowEvent e) {
-		audio.playAudioFile(new File("./img/in.wav"));
+		audio.playAudioFile(new File("./assets/in.wav"));
 		for(Windows2KApp a : apps) {
 			if(a.name.equals("Windows installer")) {
 				a.createFrame();
@@ -76,7 +76,7 @@ public class Windows2KFrame extends JFrame implements ComponentListener, WindowL
 	}
 	@Override
 	public void windowClosing(WindowEvent e) {
-		audio.playAudioFile(new File("./img/out.wav"));
+		audio.playAudioFile(new File("./assets/out.wav"));
 		audio.end = new Runnable() {
 			@Override
 			public void run() {

@@ -9,7 +9,7 @@ import javax.swing.JTextField;
 public class Windows2KInternetExplorer extends Windows2KApp {
 
 	public Windows2KInternetExplorer() {
-		super("Internet Explorer", new ImageIcon("./img/The_Internet.png"));
+		super("Internet Explorer", new ImageIcon("./assets/The_Internet.png"));
 	}
 
 	@Override
@@ -22,7 +22,7 @@ public class Windows2KInternetExplorer extends Windows2KApp {
 		input.setBounds(0, 0, frame.getWidth(), 30);
 		input.setVisible(true);
 		
-		JLabel label = new JLabel(new ImageIcon("./img/Internet_404.png"));
+		JLabel label = new JLabel(new ImageIcon("./assets/Internet_404.png"));
 		label.setBounds(0, 30, frame.getWidth(), frame.getHeight()-30);
 		label.setVisible(true);
 		

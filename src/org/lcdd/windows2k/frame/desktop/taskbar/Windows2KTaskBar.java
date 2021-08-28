@@ -18,7 +18,7 @@ import org.lcdd.windows2k.utils.Utils;
 @SuppressWarnings("serial")
 public class Windows2KTaskBar extends JDesktopPane {
 
-	private JLabel startMenu = new JLabel(new ImageIcon("./img/start_main.jpg"));
+	private JLabel startMenu = new JLabel(new ImageIcon("./assets/start_main.jpg"));
 	private JLabel hour = new JLabel("<html>hour</html>");
 	private Windows2KFrame frame;
 	private List<JLabel> appLabels = new ArrayList<>();

@@ -8,7 +8,7 @@ import java.io.*;
 
 public class Windows2KAudioPlayerApp extends Windows2KApp{
     public Windows2KAudioPlayerApp() {
-        super("Audio Player", new ImageIcon("./img/AudioPlayer.png"));
+        super("Audio Player", new ImageIcon("./assets/AudioPlayer.png"));
     }
     private AudioPlayerManager manager = new AudioPlayerManager();
     private boolean isPlaying = false;
@@ -22,10 +22,10 @@ public class Windows2KAudioPlayerApp extends Windows2KApp{
         text.setBounds(0,600-200,720,600);
 
         button.setBackground(Color.BLACK);
-        button.setIcon(new ImageIcon("./img/play.jpg"));
+        button.setIcon(new ImageIcon("./assets/play.jpg"));
         button.addActionListener(e -> {
             if(!isPlaying) {
-                manager.playAudioFile(new File("./img/music.wav"));
+                manager.playAudioFile(new File("./assets/music.wav"));
                 isPlaying = true;
             }else{
                 manager.stopAudioFile();
