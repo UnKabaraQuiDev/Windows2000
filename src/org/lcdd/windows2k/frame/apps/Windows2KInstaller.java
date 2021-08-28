@@ -1,5 +1,6 @@
 package org.lcdd.windows2k.frame.apps;
 
+import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.beans.PropertyVetoException;
@@ -37,7 +38,17 @@ public class Windows2KInstaller extends Windows2KApp {
         frame.setBounds(0, 0, 1000, 600);
 
         cgu.setHorizontalAlignment(SwingConstants.CENTER);
-        cgu.setText("<html><bold>Conditions\n d'utilisation:</bold><br>je suis un bg, tout simplement<html>");
+        String text = "CGU :<br>"
+        		+ "Ne pas utiliser ce programme si vous êtes un peu bête, que vous avez des problèmes de vue. En acceptant ces cgu, vous acceptez de raquer un smic et "
+        		+ "d'hypothéquer votre maison pour une license, d'utiliser un os pas stable closed-source qui vole vos données, et qui est po bo.<br><br>"
+        		+ "Je vous conseille de fuir, d'aller sous GNU/Linux.<br><br>"
+        		+ "Au fait, je suis un bg, vraiment bg, mais les développeurs sont pas très doués et laissent plein de bugs...<br>"
+        		+ "<br>"
+        		+ "<br>"
+        		+ "Veuillez accepter celles-ci en signant de votre sang.<br>"
+        		+ "<br>"
+        		+ "All rights reserved, Rabbit Corporation, PDG : Typhon";
+        cgu.setText("<html><div style='text-align: center; font-size: large; font-family: \"Microsoft Sans Serif\"'>"+text+"</div></html>");
         cgu.setBounds(0, 0, 1000, frame.getHeight()-120);
         cgu.setVisible(true);
         

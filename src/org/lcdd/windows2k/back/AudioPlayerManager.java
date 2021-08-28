@@ -39,7 +39,9 @@ public class AudioPlayerManager {
     public void stopAudioFile(){
         if(clip != null){
             clip.stop();
-            end.run();
+            if(end != null) {
+            	end.run();
+            }
         }
     }
 }
