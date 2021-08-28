@@ -16,6 +16,7 @@ public class CmdManager {
     public String executeCommand(String command, String argument){
         if(randomCommands.containsKey(command)) {
             String cmd = randomCommands.get(command);
+            System.out.println(command + "\n" + argument);
             switch (cmd){
                 case "dir":
                     ArrayList<String> ret = new ArrayList<>();
@@ -26,18 +27,18 @@ public class CmdManager {
                             ret.add(f.getName());
                         }
                     }
-                    return ret.toString().replace('[',' ').replace(']',' ').replaceAll(",","\n");
+                    return command+" "+argument+"\n"+ret.toString().replace('[',' ').replace(']',' ').replaceAll(",","\n");
                 case "echo":
-                    return argument;
+                    return command+" "+argument+"\n"+argument;
                 case "help":
-                    return "Commands:\n dir: Displays the list of files and subdirectories of a directory.\necho: print the argument.\ncd: go to a subdirectory.";
+                    return command+"\nCommands:\n dir: Displays the list of files and subdirectories of a directory.\necho: print the argument.\ncd: go to a subdirectory.";
                 case "cd":
                     File newActive = new File(activeDirectory.getAbsolutePath()+File.separator+argument);
                     if(newActive.exists()){
                         activeDirectory = newActive;
-                        return "";
+                        return command+ " " + argument;
                     }else{
-                        return "This directory doesn't exist";
+                        return command+" "+argument+"\nThis directory doesn't exist";
                     }
                 default:
                     return "This command doesn't exist";

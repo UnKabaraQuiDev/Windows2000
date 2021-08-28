@@ -9,6 +9,7 @@ import java.util.List;
 import javax.swing.JFrame;
 
 import org.lcdd.windows2k.frame.apps.Windows2KApp;
+import org.lcdd.windows2k.frame.apps.Windows2KAudioPlayerApp;
 import org.lcdd.windows2k.frame.apps.Windows2KFileExplorerApp;
 import org.lcdd.windows2k.frame.apps.Windows2KCmdApp;
 import org.lcdd.windows2k.back.ClockManager;
@@ -34,6 +35,7 @@ public class Windows2KFrame extends JFrame implements ComponentListener {
 		
 		apps.add(new Windows2KFileExplorerApp());
 		apps.add(new Windows2KCmdApp());
+		apps.add(new Windows2KAudioPlayerApp());
 		
 		desktop = new Windows2KFrameDesktop(this);
 		super.setContentPane(desktop);

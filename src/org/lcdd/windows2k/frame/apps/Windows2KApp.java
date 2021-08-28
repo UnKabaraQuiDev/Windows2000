@@ -24,6 +24,8 @@ public abstract class Windows2KApp {
 	}
 	
 	public abstract JInternalFrame createFrame();
+
+	public abstract void onClose();
 	
 	protected void registerFrame(JInternalFrame frame) {
 		Windows2KMain.frame.desktop.add(frame);
@@ -43,6 +45,7 @@ public abstract class Windows2KApp {
 			@Override
 			public void internalFrameClosing(InternalFrameEvent e) {
 				openedFrames.remove(frame);
+				onClose();
 			}
 			@Override
 			public void internalFrameClosed(InternalFrameEvent e) {}

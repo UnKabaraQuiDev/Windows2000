@@ -32,4 +32,9 @@ public class Windows2KFileExplorerApp extends Windows2KApp {
 		return frame;
 	}
 
+	@Override
+	public void onClose() {
+
+	}
+
 }

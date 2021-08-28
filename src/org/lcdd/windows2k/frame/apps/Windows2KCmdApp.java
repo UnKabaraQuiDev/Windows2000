@@ -31,10 +31,12 @@ public class Windows2KCmdApp extends Windows2KApp {
         input.addActionListener(new ActionListener() {
         	@Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Enter pressed");
+                System.out.println(e.getActionCommand());
+                System.out.println(e.getActionCommand().split(" ").length);
                 StringBuilder argument = new StringBuilder();
                 if (e.getActionCommand().split(" ").length > 1) {
-                    for (int i = 1; i < argument.length(); i++) {
+                    System.out.println("+ de 1");
+                    for (int i = 1; i < e.getActionCommand().split(" ").length; i++) {
                         argument.append(e.getActionCommand().split(" ")[i]);
                         System.out.println("+1");
                     }
@@ -47,7 +49,7 @@ public class Windows2KCmdApp extends Windows2KApp {
             }
 		});
         
-        input.setBackground(Color.BLACK);
+        input.setBackground(Color.darkGray);
         input.setBounds(0, 600-50, 720, 25);
         input.setForeground(Color.WHITE);
         
@@ -68,6 +70,11 @@ public class Windows2KCmdApp extends Windows2KApp {
         registerFrame(frame);
         return frame;
     }
-    
+
+    @Override
+    public void onClose() {
+
+    }
+
 }
 
