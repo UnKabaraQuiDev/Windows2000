@@ -15,7 +15,6 @@ public class Windows2KMain {
 			e.printStackTrace();
 		}
 	}
-	
-	public static Windows2KFrame getFrame() {return frame;}
+
 	
 }

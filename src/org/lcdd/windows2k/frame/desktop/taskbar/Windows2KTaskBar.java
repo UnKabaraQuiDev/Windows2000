@@ -11,6 +11,8 @@ import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
 import javax.swing.border.BevelBorder;
 
+import org.lcdd.windows2k.Windows2KMain;
+import org.lcdd.windows2k.frame.BlueScreen;
 import org.lcdd.windows2k.frame.Windows2KFrame;
 import org.lcdd.windows2k.frame.apps.Windows2KApp;
 import org.lcdd.windows2k.utils.Utils;
@@ -62,7 +64,8 @@ public class Windows2KTaskBar extends JDesktopPane {
 					label.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.GRAY, Color.DARK_GRAY));
 				}
 				@Override public void mouseExited(MouseEvent e) {}
-				@Override public void mouseEntered(MouseEvent e) {}
+				@Override public void mouseEntered(MouseEvent e) {
+				}
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					app.createFrame();

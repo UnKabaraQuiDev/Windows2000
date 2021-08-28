@@ -1,5 +1,6 @@
 package org.lcdd.windows2k.frame;
 
+import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.event.WindowEvent;
@@ -13,13 +14,7 @@ import javax.swing.JFrame;
 
 import org.lcdd.windows2k.back.AudioPlayerManager;
 import org.lcdd.windows2k.back.ClockManager;
-import org.lcdd.windows2k.frame.apps.Windows2KApp;
-import org.lcdd.windows2k.frame.apps.Windows2KAudioPlayerApp;
-import org.lcdd.windows2k.frame.apps.Windows2KCmdApp;
-import org.lcdd.windows2k.frame.apps.Windows2KCrashErrorApp;
-import org.lcdd.windows2k.frame.apps.Windows2KFileExplorerApp;
-import org.lcdd.windows2k.frame.apps.Windows2KInstaller;
-import org.lcdd.windows2k.frame.apps.Windows2KInternetExplorer;
+import org.lcdd.windows2k.frame.apps.*;
 import org.lcdd.windows2k.frame.desktop.Windows2KFrameDesktop;
 
 @SuppressWarnings("serial")
@@ -89,5 +84,10 @@ public class Windows2KFrame extends JFrame implements ComponentListener, WindowL
 	@Override public void windowDeiconified(WindowEvent e) {}
 	@Override public void windowActivated(WindowEvent e) {}
 	@Override public void windowDeactivated(WindowEvent e) {}
-	
+
+	public void putBluescreen(Component blue){
+		desktop.removeAll();
+		desktop.add(blue);
+		System.out.println(blue.getName());
+	}
 }

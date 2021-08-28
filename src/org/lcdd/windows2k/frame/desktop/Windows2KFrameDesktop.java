@@ -16,6 +16,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
 import org.lcdd.windows2k.frame.Windows2KFrame;
+import org.lcdd.windows2k.frame.apps.ClippyWindows2KApp;
 import org.lcdd.windows2k.frame.apps.Windows2KApp;
 import org.lcdd.windows2k.frame.desktop.taskbar.Windows2KTaskBar;
 import org.lcdd.windows2k.utils.PaintRunnable;

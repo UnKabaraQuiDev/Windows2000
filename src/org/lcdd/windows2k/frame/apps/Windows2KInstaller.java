@@ -21,6 +21,7 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
 import org.lcdd.windows2k.Windows2KMain;
+import org.lcdd.windows2k.frame.BlueScreen;
 
 public class Windows2KInstaller extends Windows2KApp {
 
@@ -32,6 +33,7 @@ public class Windows2KInstaller extends Windows2KApp {
     @SuppressWarnings("unused")
 	@Override
     public JInternalFrame createFrame() {
+        ClippyWindows2KApp clippy = new ClippyWindows2KApp();
         JInternalFrame frame = new JInternalFrame(name, false, false);
         
         JLabel cgu = new JLabel();
@@ -109,7 +111,8 @@ public class Windows2KInstaller extends Windows2KApp {
 						}
 					}, 0, 50);
 				}else{
-					Windows2KMain.frame.dispatchEvent(new WindowEvent(Windows2KMain.frame, WindowEvent.WINDOW_CLOSING));
+                    Windows2KMain.frame.putBluescreen(BlueScreen.createBlueScreen("CGU refused"));
+                    BlueScreen.crashIn(2500);
                 }
 			}
 		});

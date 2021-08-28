@@ -18,6 +18,7 @@ import javax.swing.SwingConstants;
 
 import org.lcdd.windows2k.Windows2KMain;
 import org.lcdd.windows2k.back.AudioPlayerManager;
+import org.lcdd.windows2k.frame.BlueScreen;
 import org.lcdd.windows2k.frame.Windows2KFrame;
 import org.lcdd.windows2k.frame.desktop.Windows2KFrameDesktop;
 
@@ -109,10 +110,11 @@ public class Windows2KCrashErrorApp extends Windows2KApp {
 			@SuppressWarnings("deprecation")
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Windows2KMain.frame.dispatchEvent(new WindowEvent(Windows2KMain.frame, WindowEvent.WINDOW_CLOSING));
+				Windows2KMain.frame.putBluescreen(BlueScreen.createBlueScreen("Memory Exceeded"));
 				for(Thread th : ths) {
 					th.stop();
 				}
+				BlueScreen.crashIn(2500);
 			}
 		});
 		btn.setBounds(0,dialog.getHeight()/2, dialog.getWidth(), dialog.getHeight()/2);
