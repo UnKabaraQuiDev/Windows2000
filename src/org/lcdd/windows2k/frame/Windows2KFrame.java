@@ -14,6 +14,7 @@ import org.lcdd.windows2k.frame.apps.Windows2KAudioPlayerApp;
 import org.lcdd.windows2k.frame.apps.Windows2KCmdApp;
 import org.lcdd.windows2k.frame.apps.Windows2KCrashErrorApp;
 import org.lcdd.windows2k.frame.apps.Windows2KFileExplorerApp;
+import org.lcdd.windows2k.frame.apps.Windows2KInternetExplorer;
 import org.lcdd.windows2k.frame.desktop.Windows2KFrameDesktop;
 
 @SuppressWarnings("serial")
@@ -36,6 +37,7 @@ public class Windows2KFrame extends JFrame implements ComponentListener {
 		apps.add(new Windows2KCmdApp());
 		apps.add(new Windows2KCrashErrorApp());
 		apps.add(new Windows2KAudioPlayerApp());
+		apps.add(new Windows2KInternetExplorer());
 		
 		desktop = new Windows2KFrameDesktop(this);
 		super.setContentPane(desktop);
@@ -45,7 +47,6 @@ public class Windows2KFrame extends JFrame implements ComponentListener {
 		clockManager = new ClockManager();
 		
 		desktop.updateLocation();
-		super.setSize(1250, 720);
 	}
 
 	@Override
