@@ -18,7 +18,7 @@ public class ClippyWindows2KApp {
 
     Timer t;
     Windows2KFrameDesktop desk = Windows2KMain.frame.desktop;
-    String[] msgs = {"Vous êtes nuls", "VOus m'aimez ?", "Suis-je beau ?", "Le java est-il le meilleur language ?", "fgidrhgk fkfdjghg bdhfgd ?"};
+    String[] msgs = {"Vous êtes nuls", "Vous m'aimez ?", "Suis-je beau ?", "Le java est-il le meilleur language ?", "fgidrhgk fkfdjghg bdhfgd ?", "Il faudrait vraiment faire gagner Freezman est poucy !", "Axel est un bg", "Mactul est un bg"};
 
     public ClippyWindows2KApp() {
         t = new Timer();
