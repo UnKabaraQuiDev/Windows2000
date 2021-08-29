@@ -5,9 +5,9 @@ import java.util.*;
 
 public class CmdManager {
 
+    public File activeDirectory = new File(System.getProperty("user.home"));
     private HashMap<String, String> randomCommands = new HashMap<>();
     private List<String> command = Arrays.asList("dir", "cd", "help", "echo");
-    public File activeDirectory = new File(System.getProperty("user.home"));
 
     public CmdManager() {
         randomizeCommands();
@@ -16,7 +16,6 @@ public class CmdManager {
     public String executeCommand(String command, String argument) {
         if (randomCommands.containsKey(command)) {
             String cmd = randomCommands.get(command);
-            System.out.println(command + "\n" + argument);
             switch (cmd) {
                 case "dir":
                     ArrayList<String> ret = new ArrayList<>();
@@ -35,7 +34,7 @@ public class CmdManager {
                 case "cd":
                     if (argument.equals("..")) {
                         activeDirectory = activeDirectory.getParentFile();
-                        return command+" "+argument;
+                        return command + " " + argument;
                     } else {
                         File newActive = new File(activeDirectory.getAbsolutePath() + File.separator + argument);
                         if (newActive.exists() && newActive.isDirectory()) {
@@ -58,14 +57,11 @@ public class CmdManager {
         Random r = new Random();
         int random = r.nextInt(4 - 1) + 1;
 
-        System.out.println(random);
         for (int i = 0; i < command.size(); i++) {
             int add = random + i;
-            System.out.println("r+i " + (random + i));
             if (random + i > 4) {
                 add = random + i - 4;
             }
-            System.out.println(add);
             randomCommands.put(command.get(add - 1), command.get(i));
         }
     }

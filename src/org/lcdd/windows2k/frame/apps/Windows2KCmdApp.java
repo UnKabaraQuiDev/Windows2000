@@ -21,19 +21,13 @@ public class Windows2KCmdApp extends Windows2KApp {
         JScrollPane scrollPane = new JScrollPane(text);
 
         input.addActionListener(e -> {
-            System.out.println(e.getActionCommand());
-            System.out.println(e.getActionCommand().split(" ").length);
             StringBuilder argument = new StringBuilder();
             if (e.getActionCommand().split(" ").length > 1) {
-                System.out.println("+ de 1");
                 for (int i = 1; i < e.getActionCommand().split(" ").length; i++) {
                     argument.append(e.getActionCommand().split(" ")[i]);
-                    System.out.println("+1");
                 }
             }
-            System.out.println(argument);
             String output = manager.executeCommand(e.getActionCommand().split(" ")[0], argument.toString());
-            System.out.println(output);
             text.append("\n" + manager.activeDirectory.getPath() + " > " + output);
             input.setText("");
         });
