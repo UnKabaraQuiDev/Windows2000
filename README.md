@@ -7,7 +7,7 @@ Nous avons donc décidé de partir sur la version pro de Windows ME, Windows 200
 Ce logiciel est fait en java est n'est **pas** un vrai os, juste une simulation
 
 ## Comment installer ?
-Il vous suffit, soit d'exécuter le jar fourni avec java 8, ou alors d'utiliser l'exécutable mac ou windows. Attention cependant à ne pas oublier le dossier __*assets/*__ sans quoi le programmme ne pourra pas se lancer
+Il vous suffit, soit d'exécuter le jar fourni avec java 8. Attention cependant à ne pas oublier le dossier __*assets/*__ sans quoi le programmme ne pourra pas se lancer
 
 ## Liste des bugs
 ### Ne pas lire avant d'avoir découvert, contient du spoil !
@@ -23,6 +23,6 @@ Il vous suffit, soit d'exécuter le jar fourni avec java 8, ou alors d'utiliser 
   <li> Internet explorer, est, comme d'habitude, bien buggé ! </li>
   <li> Saurez-vous lancer une application depuis le start menu ? Moi je ne pense pas ! </li>
   <li> Le terminal de commande, a tout inversé dans les commandes disponibles... Saurez vous les retrouver ? </li>
-  <li> L'exploratur de fichiers a quelques problème d'encodage sur les noms... </li>
+  <li> L'explorateur de fichiers a quelques problème d'encodage sur les noms... </li>
   </ul>
 </details>
