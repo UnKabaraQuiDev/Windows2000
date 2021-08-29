@@ -29,6 +29,7 @@ public class Windows2KFrame extends JFrame implements ComponentListener, WindowL
         super("Windows 2000 Simulation");
         super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         super.setBounds(0, 0, 1250, 720);
+        super.setIconImage(new ImageIcon("./assets/windows.png").getImage());
 
         super.addComponentListener(this);
         super.addWindowListener(this);
