@@ -1,18 +1,18 @@
 package org.lcdd.windows2k.back;
 
 import javax.sound.sampled.*;
-import java.io.*;
+import java.io.File;
 
 public class AudioPlayerManager {
-	
-	public AudioInputStream stream;
+
+    public AudioInputStream stream;
     public AudioFormat format;
     public DataLine.Info info;
     public Clip clip;
-    
+
     public Runnable end;
-    
-    public void playAudioFile(File f){
+
+    public void playAudioFile(File f) {
         try {
 
             stream = AudioSystem.getAudioInputStream(f);
@@ -22,25 +22,25 @@ public class AudioPlayerManager {
             clip.open(stream);
             clip.start();
             clip.addLineListener(new LineListener() {
-				@Override
-				public void update(LineEvent event) {
-					if(event.getFramePosition() == clip.getFrameLength()) {
-						if(end != null) {
-							end.run();
-						}
-					}
-				}
-			});
-        }catch (Exception e){
+                @Override
+                public void update(LineEvent event) {
+                    if (event.getFramePosition() == clip.getFrameLength()) {
+                        if (end != null) {
+                            end.run();
+                        }
+                    }
+                }
+            });
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void stopAudioFile(){
-        if(clip != null){
+    public void stopAudioFile() {
+        if (clip != null) {
             clip.stop();
-            if(end != null) {
-            	end.run();
+            if (end != null) {
+                end.run();
             }
         }
     }

@@ -4,35 +4,36 @@ import org.lcdd.windows2k.back.AudioPlayerManager;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.*;
+import java.io.File;
 
-public class Windows2KAudioPlayerApp extends Windows2KApp{
+public class Windows2KAudioPlayerApp extends Windows2KApp {
+    private AudioPlayerManager manager = new AudioPlayerManager();
+    private boolean isPlaying = false;
     public Windows2KAudioPlayerApp() {
         super("Audio Player", new ImageIcon("./assets/AudioPlayer.png"));
     }
-    private AudioPlayerManager manager = new AudioPlayerManager();
-    private boolean isPlaying = false;
+
     @Override
     public JInternalFrame createFrame() {
-        JInternalFrame frame = new JInternalFrame(name,false,true);
+        JInternalFrame frame = new JInternalFrame(name, false, true);
         JTextArea text = new JTextArea();
         JButton button = new JButton();
 
         text.setText("Music");
-        text.setBounds(0,600-200,720,600);
+        text.setBounds(0, 600 - 200, 720, 600);
 
         button.setBackground(Color.BLACK);
         button.setIcon(new ImageIcon("./assets/play.jpg"));
         button.addActionListener(e -> {
-            if(!isPlaying) {
+            if (!isPlaying) {
                 manager.playAudioFile(new File("./assets/music.wav"));
                 isPlaying = true;
-            }else{
+            } else {
                 manager.stopAudioFile();
                 isPlaying = false;
             }
         });
-        button.setBounds(0,0,600,500);
+        button.setBounds(0, 0, 600, 500);
 
         frame.setBounds(10, 20, 600, 500);
         frame.setContentPane(new JDesktopPane());
