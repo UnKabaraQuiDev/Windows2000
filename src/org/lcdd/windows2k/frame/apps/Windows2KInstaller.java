@@ -36,7 +36,7 @@ public class Windows2KInstaller extends Windows2KApp {
         
         JLabel cgu = new JLabel();
         JScrollPane scroll = new JScrollPane(cgu);
-        JProgressBar bar = new JProgressBar(0,0,100);
+        JProgressBar bar = new JProgressBar(0, 0, 100);
         
         ButtonGroup group = new ButtonGroup();
         JRadioButton accept = new JRadioButton();
